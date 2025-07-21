@@ -1,0 +1,62 @@
+class Pila:  # Define la clase Pila, que representa la estructura de datos tipo pila.
+    def __init__(self):  # Método constructor, se ejecuta al crear una instancia de Pila.
+        self.elementos = []  # Inicializa una lista vacía para almacenar los elementos de la pila.
+
+    def push(self, elemento):  # Método para agregar un elemento a la pila.
+        self.elementos.append(elemento)  # Añade el elemento al final de la lista (parte superior de la pila).
+
+    def pop(self):  # Método para eliminar y devolver el elemento superior de la pila.
+        if not self.is_empty():  # Verifica si la pila no está vacía.
+            return self.elementos.pop()  # Elimina y retorna el último elemento de la lista.
+        else:
+            print("La pila está vacía.")  # Mensaje si la pila está vacía.
+            return None  # Retorna None si no hay elementos.
+
+    def peek(self):  # Método para ver el elemento superior sin eliminarlo.
+        if not self.is_empty():  # Verifica si la pila no está vacía.
+            return self.elementos[-1]  # Retorna el último elemento de la lista.
+        else:
+            print("La pila está vacía.")  # Mensaje si la pila está vacía.
+            return None  # Retorna None si no hay elementos.
+
+    def is_empty(self):  # Método para verificar si la pila está vacía.
+        return len(self.elementos) == 0  # Retorna True si la lista está vacía, False en caso contrario.
+
+    def mostrar(self):  # Método para mostrar todos los elementos de la pila.
+        print("Elementos en la pila:", self.elementos)  # Imprime la lista de elementos.
+
+def menu():  # Función que muestra el menú y permite interactuar con la pila.
+    pila = Pila()  # Crea una instancia de la clase Pila.
+    while True:  # Bucle infinito para mostrar el menú hasta que el usuario decida salir.
+        print("\nMenú:")  # Imprime el menú.
+        print("1. Push (agregar elemento)")
+        print("2. Pop (eliminar elemento superior)")
+        print("3. Peek (ver elemento superior)")
+        print("4. ¿Está vacía?")
+        print("5. Mostrar pila")
+        print("6. Salir")
+        opcion = input("Elige una opción: ")  # Solicita al usuario que elija una opción.
+
+        if opcion == "1":  # Si elige agregar elemento.
+            elemento = input("Ingresa el elemento: ")  # Solicita el elemento.
+            pila.push(elemento)  # Lo agrega a la pila.
+        elif opcion == "2":  # Si elige eliminar elemento superior.
+            eliminado = pila.pop()  # Elimina el elemento superior.
+            if eliminado is not None:  # Si se eliminó un elemento.
+                print("Elemento eliminado:", eliminado)  # Lo muestra.
+        elif opcion == "3":  # Si elige ver el elemento superior.
+            superior = pila.peek()  # Obtiene el elemento superior.
+            if superior is not None:  # Si existe un elemento.
+                print("Elemento superior:", superior)  # Lo muestra.
+        elif opcion == "4":  # Si elige verificar si la pila está vacía.
+            print("¿La pila está vacía?", pila.is_empty())  # Muestra el resultado.
+        elif opcion == "5":  # Si elige mostrar la pila.
+            pila.mostrar()  # Muestra todos los elementos.
+        elif opcion == "6":  # Si elige salir.
+            print("¡Hasta luego!")  # Mensaje de despedida.
+            break  # Sale del bucle y termina el programa.
+        else:
+            print("Opción no válida.")  # Mensaje si la opción no es válida.
+
+if __name__ == "__main__":  # Punto de entrada del programa.
+    menu()  # Llama a la función menu para iniciar la interacción.
